@@ -11,7 +11,7 @@ const SUPPORTED_BANKS = [{
     redirectUrl: "https://netbanking.hdfcbank.com"
 }, {
     name: "Axis Bank",
-    redirectUrl: "https://www.axisbank.com/"
+    redirectUrl: "https://www.axisbank.com"
 }];
 
 export const AddMoney = () => {
