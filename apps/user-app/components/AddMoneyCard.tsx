@@ -22,7 +22,7 @@ export const AddMoney = () => {
     return <Card title="Add Money">
     <div className="w-full">
         <TextInput label={"Amount"} placeholder={"Amount"} onChange={(value) => {
-            setAmount(value);
+            setAmount(Number(value));
         }} />
         <div className="py-4 text-left">
             Bank
