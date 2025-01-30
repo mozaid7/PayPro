@@ -1,4 +1,4 @@
-// To be updated
+// To be updated later while completion
 - Clone the repo
 
 ```jsx
