@@ -1,4 +1,4 @@
-// To be updated later while completion of OS, DBMS & CN
+// To be updated later while completion of OS, DBMS & CN tomorrow
 - Clone the repo
 
 ```jsx
