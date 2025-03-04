@@ -1,5 +1,6 @@
 "use client"
 
+// signup page for auth
 import type React from "react"
 
 import { useState } from "react"
