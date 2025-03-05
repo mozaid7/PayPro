@@ -26,14 +26,14 @@ export default function SignIn() {
 
   return (
     <>
-      <div className="flex items-center justify-center min-h-screen bg-[#f8ece4] text-black-100">
+      <div className="flex items-center justify-center min-h-screen bg-[#c28adb] text-black-100">
         <div className="bg-white shadow-lg rounded-2xl p-10 flex items-center gap-16 border-8 border-white">
           <form onSubmit={handleSignIn} className="flex flex-col gap-6">
             <input
-              type="email"
+              type="tel"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              placeholder="Email"
+              placeholder="Number"
               className="px-4 py-2 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
             <input
@@ -45,7 +45,7 @@ export default function SignIn() {
             />
             <button
               type="submit"
-              className="bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-all"
+              className="bg-purple-500 text-white py-2 rounded-lg hover:bg-purple-600 transition-all"
             >
               Log In
             </button>
