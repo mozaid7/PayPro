@@ -1,13 +1,14 @@
 import db from "@repo/db/client";
 import CredentialsProvider from "next-auth/providers/credentials"
 import bcrypt from "bcrypt";
+import GitHubProvider from "next-auth/providers/github";
 
 export const authOptions = {
     providers: [
       CredentialsProvider({
           name: 'Credentials',
           credentials: {
-            phone: { label: "Phone number", type: "text", placeholder: "1231231231", required: true },
+            phone: { label: "Phone number", type: "text", required: true },
             password: { label: "Password", type: "password", required: true }
           },
           // TODO: User credentials type from next-aut
@@ -51,9 +52,16 @@ export const authOptions = {
 
             return null
           },
+        }),
+        GitHubProvider({
+            clientId: process.env.GITHUB_CLIENT_ID || "",
+            clientSecret: process.env.GITHUB_CLIENT_SECRET || ""
         })
     ],
     secret: process.env.JWT_SECRET || "secret",
+    pages: {
+        signIn: "/signin",
+    },
     callbacks: {
         // TODO: can u fix the type here? Using any is bad
         async session({ token, session }: any) {
