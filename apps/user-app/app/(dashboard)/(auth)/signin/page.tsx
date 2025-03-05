@@ -58,13 +58,6 @@ export default function SignIn() {
               Sign In with Github
             </button>
 
-            <button
-              type="button"
-              className="bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition-all"
-              onClick={() => router.push("/signup")}
-            >
-              Create New account
-            </button>
           </form>
         </div>
       </div>
