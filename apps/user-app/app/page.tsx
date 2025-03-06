@@ -1,5 +1,5 @@
 // checking the build func
-
+// db generate script added
 
 import { getServerSession } from "next-auth";
 import { redirect } from 'next/navigation'
