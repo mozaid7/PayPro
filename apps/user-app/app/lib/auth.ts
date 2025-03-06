@@ -1,4 +1,4 @@
-import prisma from "./prisma";
+import db from "@repo/db/client";
 import CredentialsProvider from "next-auth/providers/credentials"
 import bcrypt from "bcrypt";
 import GitHubProvider from "next-auth/providers/github";
@@ -15,7 +15,7 @@ export const authOptions = {
           async authorize(credentials: any) {
             // Do zod validation, OTP validation here
             const hashedPassword = await bcrypt.hash(credentials.password, 10);
-            const existingUser = await prisma.user.findFirst({
+            const existingUser = await db.user.findFirst({
                 where: {
                     number: credentials.phone
                 }
@@ -34,7 +34,7 @@ export const authOptions = {
             }
 
             try {
-                const user = await prisma.user.create({
+                const user = await db.user.create({
                     data: {
                         number: credentials.phone,
                         password: hashedPassword
