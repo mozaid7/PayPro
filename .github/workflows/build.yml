@@ -25,8 +25,11 @@ jobs:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: echo "DATABASE_URL is set"
 
+      - name: Debug Prisma Schema Location
+        run: ls -R packages/db/prisma
+
       - name: Generate Prisma Client
-        run: npx prisma generate
+        run: npx prisma generate --schema=./packages/db/prisma/schema.prisma
 
       - name: Run Build
         run: npm run build
