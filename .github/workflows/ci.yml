@@ -1,4 +1,4 @@
-name: CI - Build and Test
+name: CI - PayPro Monorepo
 
 on:
   push:
@@ -7,6 +7,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
 
     steps:
       - name: 🧩 Checkout repository
@@ -16,35 +17,34 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
+          cache: "npm"
 
       - name: 📦 Install dependencies
-        run: |
-          if [ -f "package-lock.json" ]; then
-            npm ci
-          else
-            npm install
-          fi
+        run: npm ci
 
-      - name: 🔍 Run Linter
-        run: |
-          if npm run | grep -q "lint"; then
-            npm run lint
-          else
-            echo "⚠️ No lint script found, skipping..."
-          fi
+      - name: 🧱 Build all TurboRepo apps
+        run: npx turbo run build --filter=...
 
-      - name: 🧱 Build Project
-        run: |
-          if npm run | grep -q "build"; then
-            npm run build
-          else
-            echo "⚠️ No build script found, skipping..."
-          fi
-
-      - name: 🧪 Run Tests
+      - name: 🧪 Run tests (if available)
         run: |
           if npm run | grep -q "test"; then
-            npm test --if-present
+            npx turbo run test --filter=...
           else
-            echo "⚠️ No test script found, skipping..."
+            echo "⚠️ No test scripts found, skipping..."
+          fi
+
+      - name: 🧹 Run linter (if available)
+        run: |
+          if npm run | grep -q "lint"; then
+            npx turbo run lint --filter=...
+          else
+            echo "⚠️ No lint scripts found, skipping..."
+          fi
+
+      - name: 🐳 Docker Compose build check (optional)
+        run: |
+          if [ -f "docker-compose.yml" ]; then
+            docker compose config
+          else
+            echo "⚠️ No docker-compose.yml found, skipping Docker check..."
           fi
