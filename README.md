@@ -1,16 +1,42 @@
-// To be updated later while completion of OS, DBMS & CN tomorrow
-- Clone the repo
+# 💸 PayPro — Modern Payments Platform
 
-```jsx
-git clone https://github.com/100xdevs-cohort-2/week-17-final-code
-```
+**PayPro** is a modern, secure, and scalable web application that enables users to seamlessly send money, manage wallets, and perform on-ramping/off-ramping of funds.  
+It’s designed using **Next.js**, **PostgreSQL**, **NextAuth**, and **Docker**, and is powered by **Turborepo** for efficient monorepo management.
 
-- npm install
-- Run postgres either locally or on the cloud (neon.tech)
+---
 
-```jsx
-docker run  -e POSTGRES_PASSWORD=mysecretpassword -d -p 5432:5432 postgres
-```
+## 🚀 Features
+
+- 🔐 **User Authentication** — Secure login & signup using NextAuth  
+- 💳 **Wallet System** — Add and manage funds with real-time balance updates  
+- 💸 **Payments & Transfers** — Send and receive money instantly  
+- 🪙 **On-Ramping Support** — Add funds from external payment providers  
+- 🐳 **Dockerized Environment** — Easy setup and consistent development  
+- 🧩 **Modular Architecture** — Built using Turborepo for scalability  
+
+---
+
+## 🧠 Tech Stack
+
+| Category | Technologies Used |
+|-----------|------------------|
+| **Frontend** | Next.js, React, Tailwind CSS |
+| **Backend** | Node.js, NextAuth, Prisma |
+| **Database** | PostgreSQL |
+| **Infrastructure** | Docker, Docker Compose |
+| **Tooling** | Turborepo, TypeScript |
+
+---
+
+## ⚙️ Getting Started
+
+Follow these steps to run **PayPro** locally:
+
+### 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/your-username/PayPro.git
+cd PayPro/PayPro-main
 
 - Copy over all .env.example files to .env
 - Update .env files everywhere with the right db url
